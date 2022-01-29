@@ -5,6 +5,7 @@
 - I made this clock based on a youtube video to learn more about HTML, CSS and JS.
 - It's Free and Open Source, have fun with it!
 - Feel free to Pull Request.
+- Test it here: https://sorenkazam.github.io/JS-CLOCK/
 
 ### My social
 
