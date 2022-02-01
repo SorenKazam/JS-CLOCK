@@ -18,7 +18,7 @@ setInterval(clock, 1000) // 1000 = 1s
 const textHour = document.getElementById('text-hour'),
       textMinutes = document.getElementById('text-minutes'),
       textAmPm = document.getElementById('text-ampm'),
-    //   dateWeek = document.getElementById('date-day-week'),
+      dateWeek = document.getElementById('date-day-week'),
       dateDay = document.getElementById('date-day'),
       dateMonth = document.getElementById('date-month'),
       dateYear = document.getElementById('date-year')
@@ -30,7 +30,7 @@ const clockText = () =>{
         ampm,
         mm = date.getMinutes(),
         day = date.getDate(),
-        // dayweek = date.getDay(),
+        dayweek = date.getDay(),
         month = date.getMonth(),
         year = date.getFullYear()
 
@@ -61,14 +61,14 @@ const clockText = () =>{
     textAmPm.innerHTML = ampm
 
     // If you want to show the name of the day of the week
-    // let week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+    let week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
 
     // We get the months of the year and show it
     let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     // We show the day, the month and the year
     dateDay.innerHTML = day
-    // dateWeek.innerHTML = `${week[dayweek]}`
+    dateWeek.innerHTML = `${week[dayweek]}`
     dateMonth.innerHTML = `${months[month]},`
     dateYear.innerHTML = year
 }
