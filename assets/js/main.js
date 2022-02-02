@@ -36,7 +36,6 @@ const clockText = () =>{
 
     // We change the hours from 24 to 12 hours and establish whether it is AM or PM
     if(hh >= 12){
-        hh = hh - 12
         ampm = 'PM'
     }else{
         ampm = 'AM'
@@ -102,3 +101,24 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+// Change between 12 hour and 24 hour clock
+textAmPm.addEventListener('click', () => {
+    let date = new Date() /* get date */
+    let hh = date.getHours() /* get hours */ 
+
+    if (textAmPm.style.display === 'none'){ // 12 hours
+        hh = hh - 12
+        textAmPm.style.display == 'block'
+    }
+    else { // 24 hours
+        hh = hh + 12
+        textAmPm.style.display == 'none'
+    }
+})
+
+
+
+function clockSwitch(){
+    
+}
