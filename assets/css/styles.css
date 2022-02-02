@@ -231,6 +231,8 @@ a {
 .clock__text {
   display: flex;
   justify-content: center;
+  
+  cursor: pointer;
 }
 
 .clock__text-hour, 

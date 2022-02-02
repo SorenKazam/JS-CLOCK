@@ -18,7 +18,7 @@ setInterval(clock, 1000) // 1000 = 1s
 const textHour = document.getElementById('text-hour'),
       textMinutes = document.getElementById('text-minutes'),
       textAmPm = document.getElementById('text-ampm'),
-    //   dateWeek = document.getElementById('date-day-week'),
+      dateWeek = document.getElementById('date-day-week'),
       dateDay = document.getElementById('date-day'),
       dateMonth = document.getElementById('date-month'),
       dateYear = document.getElementById('date-year')
@@ -30,13 +30,12 @@ const clockText = () =>{
         ampm,
         mm = date.getMinutes(),
         day = date.getDate(),
-        // dayweek = date.getDay(),
+        dayweek = date.getDay(),
         month = date.getMonth(),
         year = date.getFullYear()
 
     // We change the hours from 24 to 12 hours and establish whether it is AM or PM
     if(hh >= 12){
-        hh = hh - 12
         ampm = 'PM'
     }else{
         ampm = 'AM'
@@ -49,7 +48,7 @@ const clockText = () =>{
     if(hh < 10){hh = `0${hh}`}
 
     // Show time
-    textHour.innerHTML = `${hh}:`
+    //textHour.innerHTML = `${hh}:` /* Moved to line 111 */
     
     // Show a zero before the minutes
     if(mm < 10){mm = `0${mm}`}
@@ -61,14 +60,14 @@ const clockText = () =>{
     textAmPm.innerHTML = ampm
 
     // If you want to show the name of the day of the week
-    // let week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+    let week = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
 
     // We get the months of the year and show it
     let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     // We show the day, the month and the year
     dateDay.innerHTML = day
-    // dateWeek.innerHTML = `${week[dayweek]}`
+    dateWeek.innerHTML = `${week[dayweek]}`
     dateMonth.innerHTML = `${months[month]},`
     dateYear.innerHTML = year
 }
@@ -102,3 +101,31 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+// Change between 12 hour and 24 hour clock
+textAmPm.style.display = 'none'; /* Defaults the display style to none, also defaults to 24 hour clock */
+
+let date = new Date(); /* Get date */
+let hh = date.getHours(); /* Get hours */
+let aa; /* New hours */
+textHour.innerHTML = `${hh}:`; /* Came from line 51 */
+
+function changeClock(){
+
+    //console.log("clicked");
+    //console.log(textAmPm.style.display.toString())
+
+    if (textAmPm.style.display == 'block'){ /* Changes to 24 hour clock */
+        aa = hh;
+        textAmPm.style.display = 'none';
+        //console.log("24 Hours");
+    } 
+    else { /* Changes to 12 hour clock */
+        aa = hh - 12;
+        textAmPm.style.display = 'block';
+        //console.log("12 Hours");
+    }
+
+    //console.log(aa)
+    textHour.innerHTML = `${aa}:`; /* Atributtes the new hours to the HTML */
+}
