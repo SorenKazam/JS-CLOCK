@@ -231,6 +231,8 @@ a {
 .clock__text {
   display: flex;
   justify-content: center;
+  
+  cursor: pointer;
 }
 
 .clock__text-hour, 
@@ -245,8 +247,6 @@ a {
   color: var(--title-color);
   font-weight: var(--font-medium);
   margin-left: var(--mb-0-25);
-
-  cursor: pointer;
 }
 
 .clock__date {

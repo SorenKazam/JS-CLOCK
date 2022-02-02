@@ -48,7 +48,7 @@ const clockText = () =>{
     if(hh < 10){hh = `0${hh}`}
 
     // Show time
-    textHour.innerHTML = `${hh}:`
+    //textHour.innerHTML = `${hh}:` /* Moved to line 111 */
     
     // Show a zero before the minutes
     if(mm < 10){mm = `0${mm}`}
@@ -103,22 +103,29 @@ themeButton.addEventListener('click', () => {
 })
 
 // Change between 12 hour and 24 hour clock
-textAmPm.addEventListener('click', () => {
-    let date = new Date() /* get date */
-    let hh = date.getHours() /* get hours */ 
+textAmPm.style.display = 'none'; /* Defaults the display style to none, also defaults to 24 hour clock */
 
-    if (textAmPm.style.display === 'none'){ // 12 hours
-        hh = hh - 12
-        textAmPm.style.display == 'block'
+let date = new Date(); /* Get date */
+let hh = date.getHours(); /* Get hours */
+let aa; /* New hours */
+textHour.innerHTML = `${hh}:`; /* Came from line 51 */
+
+function changeClock(){
+
+    //console.log("clicked");
+    //console.log(textAmPm.style.display.toString())
+
+    if (textAmPm.style.display == 'block'){ /* Changes to 24 hour clock */
+        aa = hh;
+        textAmPm.style.display = 'none';
+        //console.log("24 Hours");
+    } 
+    else { /* Changes to 12 hour clock */
+        aa = hh - 12;
+        textAmPm.style.display = 'block';
+        //console.log("12 Hours");
     }
-    else { // 24 hours
-        hh = hh + 12
-        textAmPm.style.display == 'none'
-    }
-})
 
-
-
-function clockSwitch(){
-    
+    //console.log(aa)
+    textHour.innerHTML = `${aa}:`; /* Atributtes the new hours to the HTML */
 }
